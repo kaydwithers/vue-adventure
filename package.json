@@ -2,7 +2,7 @@
   "name": "adventure-webpack-vue-cli",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Kayd Withers <kayd.withers@isobar.com>",
+  "author": "Kayd Withers <kaydwithers@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
