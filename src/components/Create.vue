@@ -21,7 +21,7 @@
           <button 
             class="btn" 
             v-bind:class="{ ' is-active': characterRandom }" 
-            @click.prevent="characterRandom = !characterRandom, characterNew = characterNew"
+            @click.prevent="randomName(), randomAlignment(), randomAge(), randomGender(), randomRace(), randomOccupation(), randomLocation(), characterRandom = !characterRandom, characterNew = characterNew"
           >
             Random Character
           </button>
@@ -38,8 +38,8 @@
         <p class="white">
           <b>
             Greetings<span v-if="!nameFirst"> Adventurer!</span>
-            <span class="grey-dark" v-if="gender === 'Male' && occupation === 'Knight'"> Sir</span> 
-            <span class="grey-dark" v-if="gender === 'Female' && occupation === 'Knight'"> Dame</span> 
+            <span class="grey-dark" v-if="gender === 'male' && occupation === 'knight'"> Sir</span> 
+            <span class="grey-dark" v-if="gender === 'female' && occupation === 'knight'"> Dame</span> 
             <span class="pink">{{ nameFirst }}</span> 
             <span class="green">{{ nameMiddle }}</span> 
             <span class="blue-light">{{ nameLast }}</span> 
@@ -56,7 +56,7 @@
 
 
         <p class="grey  mb3">
-          Enter your details below. (input <b class="white">r</b> for random)
+          Enter your details below. (input <b class="white">;</b> for random)
         </p>
 
         <form class="mb1" autocomplete="off">
@@ -72,6 +72,7 @@
               name="nameFirst" 
               type="text" 
               v-model="nameFirst" 
+              @keyup.186="randomNameFirst()"
               autofocus 
             />
           </div>
@@ -82,7 +83,12 @@
               <label class="white" for="nameMiddle">
                 Middle Name:
               </label>
-              <input name="nameMiddle" type="text" v-model="nameMiddle">
+              <input 
+                name="nameMiddle" 
+                type="text" 
+                v-model="nameMiddle" 
+                @keyup.186="randomNameMiddle()"
+              >
             </div>
           </transition>
 
@@ -92,7 +98,12 @@
               <label class="white" for="nameLast">
                 Last Name:
               </label>
-              <input name="nameLast" type="text" v-model="nameLast">
+              <input 
+                name="nameLast" 
+                type="text" 
+                v-model="nameLast" 
+                @keyup.186="randomNameLast()"
+              >
             </div>
           </transition>
 
@@ -102,7 +113,12 @@
               <label class="white" for="alignment">
                 Alignment:
               </label>
-              <input name="alignment" type="text" v-model="alignment">
+              <input 
+                name="alignment" 
+                type="text" 
+                v-model="alignment"
+                @keyup.186="randomAlignment()"
+              >
             </div>
           </transition>
 
@@ -112,7 +128,12 @@
               <label class="white" for="age">
                 Age:
               </label>
-              <input name="age" type="number" v-model="age">
+              <input 
+                name="age" 
+                type="number" 
+                v-model="age" 
+                @keyup.186="randomAge()"
+              >
             </div>
           </transition>
 
@@ -122,7 +143,12 @@
               <label class="white" for="gender">
                 Gender:
               </label>
-              <input name="gender" type="text" v-model="gender">
+              <input 
+                name="gender" 
+                type="text" 
+                v-model="gender" 
+                @keyup.186="randomGender()"
+              >
             </div>
           </transition>
 
@@ -132,7 +158,12 @@
               <label class="white" for="race">
                 Race:
               </label>
-              <input name="race" type="text" v-model="race">
+              <input 
+                name="race" 
+                type="text" 
+                v-model="race" 
+                @keyup.186="randomRace()"
+              >
             </div>
           </transition>
 
@@ -142,7 +173,12 @@
               <label class="white" for="occupation">
                 Class:
               </label>
-              <input name="occupation" type="text" v-model="occupation">
+              <input 
+                name="occupation" 
+                type="text" 
+                v-model="occupation"
+                @keyup.186="randomOccupation()"
+              >
             </div>
           </transition>
 
@@ -152,7 +188,12 @@
               <label class="white" for="location">
                 Where are you from?:
               </label>
-              <input name="location" type="text" v-model="location">
+              <input 
+                name="location" 
+                type="text" 
+                v-model="location"
+                @keyup.186="randomLocation()"
+              >
             </div>
           </transition>
 
@@ -177,7 +218,22 @@
 
 
       <section v-else-if="characterRandom">
-        <p>Random Character</p>
+
+        <p class="white">
+          <b>
+            Greetings
+            <span class="grey-dark" v-if="gender === 'male' && occupation === 'knight'"> Sir</span> 
+            <span class="grey-dark" v-if="gender === 'female' && occupation === 'knight'"> Dame</span> 
+            <span class="pink">{{ name }}</span> 
+            <span class="purple-light" v-show="alignment">the {{ alignment }}</span> 
+            <span class="yellow" v-show="age">{{ age }} year old</span> 
+            <span class="red">{{ gender }}</span> 
+            <span class="blue-dark">{{ race }}</span> 
+            <span class="purple-dark">{{ occupation }}</span> 
+            <span class="grey-dark" v-show="location">from {{ location }},</span>
+            <span v-show="location">you are very weak, very slow and butt ugly.</span>  
+          </b>
+        </p>
 
         <button 
           class="btn  btn--p" 
@@ -209,7 +265,7 @@
           It's your turn to cook tonight for your company of unsavoury adventurers known as <span class="pink">Barry's Angels.</span>
         </p>
 
-        </p class="mb3">  
+        <p class="mb3">  
           You pick up and inspect a maggot infested piece of meat.
         </p>
 
@@ -234,13 +290,13 @@
 
     <transition name="fade">
       <section v-if="storyTwo">
-        <p>Story begins</p>
+        <p>To be continued.</p>
 
         <button 
           class="btn  btn--p" 
           @click.prevent="storyOne = !storyOne, storyTwo = !storyTwo, introduction = introduction"
         >
-          Begin adventure
+          Back to start
         </button>
       </section>
     </transition>
@@ -262,6 +318,7 @@
         characterRandom: false,
         storyOne: false,
         storyTwo: false,
+        name: '',
         nameFirst: '',
         nameMiddle: '',
         nameLast: '',
@@ -282,14 +339,120 @@
       toggle() {
         this.toggleActive = !this.toggleActive;
       },
-      randomFirstName() {
-        const namesFirst = [
-          'Herbert',
-          'Winston',
-          'Bob',
+      randomName() {
+        const names = [
+          'Dusty',
+          'Tiberius Facebutt',
+          'Herbert Deathrump Flamebeard',
+          'Bloodnutt the Flatulant IV',
+          'Grumpf the Angry',
+          'Prince Ludwig the Indestructible',
+          'Weasley Wigglebottom',
+          'Theodore Thornheart',
         ];
-        const index = parseInt(Math.random() * namesFirst.length, 1);
-        return namesFirst[index];
+        const index = Math.floor(Math.random() * names.length);
+        this.name = names[index];
+      },
+      randomNameFirst() {
+        const namesFirst = [
+          'Dusty',
+          'Tiberius',
+          'Herbert',
+          'Grumpf',
+          'Prince',
+          'Weasley',
+          'Winston',
+        ];
+        const index = Math.floor(Math.random() * namesFirst.length);
+        this.nameFirst = namesFirst[index];
+      },
+      randomNameMiddle() {
+        const namesMiddle = [
+          'the Flatulant',
+          'Ludwig',
+          'Deathrump',
+        ];
+        const index = Math.floor(Math.random() * namesMiddle.length);
+        this.nameMiddle = namesMiddle[index];
+      },
+      randomNameLast() {
+        const namesLast = [
+          'Deathrump',
+          'Wellington',
+          'IV',
+          'Thornheart',
+          'Flamebeard',
+          'Facebutt',
+          'the Angry',
+        ];
+        const index = Math.floor(Math.random() * namesLast.length);
+        this.nameLast = namesLast[index];
+      },
+      randomAlignment() {
+        const alignments = [
+          'good',
+          'evil',
+          'really evil',
+          'psychopathic',
+        ];
+        const index = Math.floor(Math.random() * alignments.length);
+        this.alignment = alignments[index];
+      },
+      randomAge() {
+        const index = Math.floor(Math.random() * 1000);
+        this.age = index;
+      },
+      randomGender() {
+        const genders = [
+          'male',
+          'female',
+          'transsexual',
+          'bigender',
+          'genderqueer',
+          'androgyne',
+          'drag king',
+          'drag queen',
+        ];
+        const index = Math.floor(Math.random() * genders.length);
+        this.gender = genders[index];
+      },
+      randomRace() {
+        const races = [
+          'hobbit',
+          'ork',
+          'pixie',
+          'owlbear',
+          'satyr',
+          'reptillian',
+          'goblin',
+          'monopod',
+          'giant',
+          'hobbit',
+          'kerbal',
+          'undead',
+        ];
+        const index = Math.floor(Math.random() * races.length);
+        this.race = races[index];
+      },
+      randomOccupation() {
+        const occupations = [
+          'knight',
+          'wizard',
+          'sorcerer',
+          'peasent',
+        ];
+        const index = Math.floor(Math.random() * occupations.length);
+        this.occupation = occupations[index];
+      },
+      randomLocation() {
+        const locations = [
+          'King\'s landing',
+          'Brobdingnag',
+          'Another Dimension',
+          'Hell',
+        ];
+        const index = Math.floor(Math.random() * locations.length);
+        this.location = locations[index];
       },
     },
   };
