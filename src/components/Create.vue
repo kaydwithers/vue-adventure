@@ -3,11 +3,11 @@
 
 
     <transition name="fade">
-      <div class="mb3" v-if="introduction">
+      <div class="mb-3" v-if="introduction">
 
-        <p class="mb3">Select an option.</p>
+        <p class="mb-3">Select an option.</p>
 
-        <div class="mb1">
+        <div class="mb-1">
           <button 
             class="btn" 
             v-bind:class="{ ' is-active': characterNew }" 
@@ -17,7 +17,7 @@
           </button>
         </div>
 
-        <div class="mb1">
+        <div class="mb-1">
           <button 
             class="btn" 
             v-bind:class="{ ' is-active': characterRandom }" 
@@ -55,11 +55,11 @@
 
 
 
-        <p class="grey  mb3">
+        <p class="grey  mb-3">
           Enter your details below. (input <b class="white">;</b> for random)
         </p>
 
-        <form class="mb1" autocomplete="off">
+        <form class="mb-1" autocomplete="off">
 
           <!-- First Name -->
           <div class="">
@@ -184,7 +184,7 @@
 
           <!-- Location -->
           <transition name="fade">
-            <div class="mb3" v-show="occupation">
+            <div class="mb-3" v-show="occupation">
               <label class="white" for="location">
                 Where are you from?:
               </label>
@@ -265,12 +265,12 @@
           It's your turn to cook tonight for your company of unsavoury adventurers known as <span class="pink">Barry's Angels.</span>
         </p>
 
-        <p class="mb3">  
+        <p class="mb-3">  
           You pick up and inspect a maggot infested piece of meat.
         </p>
 
         <button 
-          class="btn  db  mb1" 
+          class="btn  db  mb-1" 
           @click.prevent="storyOne = !storyOne, storyTwo = !storyTwo"
         >
           Purchase Meat

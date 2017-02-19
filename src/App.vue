@@ -6,6 +6,7 @@
     <div class="layout">
       <create></create>
       <hello></hello>
+      <battle></battle>
 
       
       <!--<testing></testing>-->
@@ -21,6 +22,7 @@
 import Navigation from './components/Navigation';
 import Create from './components/Create';
 import Hello from './components/Hello';
+import Battle from './components/Battle';
 import Testing from './components/Testing';
 
 export default {
@@ -29,6 +31,7 @@ export default {
     Navigation,
     Create,
     Hello,
+    Battle,
     Testing,
   },
 };
@@ -57,16 +60,13 @@ export default {
     font: 14px Menlo, "DejaVu Sans Mono", "Lucida Console", monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
   }
 
   .layout {
     margin: 0 auto;
     padding-top: 12rem;
     width: 640px;
-  }
-
-  #app {
-
   }
 
   button {
@@ -139,50 +139,54 @@ export default {
     color: var(--red) !important;
   }
 
-  .mb0 {
+  .mb-0 {
     margin-bottom: 0 !important;
   }
 
-  .mb\.5 {
+  .mb-\.5 {
     margin-bottom: .5rem !important;
   }
 
-  .mb1 {
+  .mb-1 {
     margin-bottom: 1rem !important;
   }
 
-  .mb2 {
+  .mb-2 {
     margin-bottom: 2rem !important;
   }
 
-  .mb3 {
+  .mb-3 {
     margin-bottom: 3rem !important;
   }
 
-  .ml1 {
+  .ml-1 {
     margin-left: 1rem !important;
   }
 
-  .mr1 {
+  .mr-1 {
     margin-right: 1rem !important;
   }
 
-  .fl {
+  .f-l {
     float: left;
   }
 
-  .fr {
+  .f-r {
     float: right;
   }
 
-  .tl {
+  .tt-u {
+    text-transform: uppercase;
+  }
+
+  .ta-l {
     text-align: left;
   }
 
-  .tr {
+  .ta-r {
     text-align: right;
   }
-  
+
   .btn {
     background-color: transparent;
     border: none;
