@@ -1,6 +1,6 @@
 
 <template>
-  <div id="demo">
+  <div id="demo" v-if="$store.state.imActive">
 
     <transition name="fade">
       <p v-if="showMe">show</p>

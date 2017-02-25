@@ -3,16 +3,34 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const state = {
-  hp: 100,
-  charisma: 20,
-  wisdom: 2,
-  alignment: 'evil',
-  weapon: 'fists of anger',
-  mood: 'angry',
-  gold: 10,
-};
-
 export default new Vuex.Store({
-  state,
+  state: {
+    start: true,
+    characterNew: false,
+    characterRandom: false,
+    storyOne: false,
+    storyTwo: false,
+    battle: false,
+    hp: 100,
+    charisma: 20,
+    wisdom: 2,
+    weapon: 'fists of anger',
+    mood: 'angry',
+    gold: 10,
+    name: '',
+    nameFirst: '',
+    nameMiddle: '',
+    nameLast: '',
+    alignment: '',
+    age: '',
+    gender: '',
+    race: '',
+    occupation: '',
+    location: '',
+    namesLast: [
+      'Deathrump',
+      'Wellington',
+      'the Great',
+    ],
+  },
 });

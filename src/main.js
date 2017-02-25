@@ -4,11 +4,13 @@ import Vue from 'vue';
 import App from './App';
 
 import store from './store';
+import random from './random';
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,
+  random,
   template: '<App/>',
   components: { App },
 });

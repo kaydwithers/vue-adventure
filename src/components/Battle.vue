@@ -1,51 +1,55 @@
 <template>
-  <div class="battle">
 
-        <div class="ta-c  mb-3">
-          <button 
-            class="btn  btn--p"
-            @click="battle()" 
-            :disabled="opponentOne.hp < 20 || opponentTwo.hp < 20"
-          >
-            Commence battle
+  <transition name="fade">
+    <section v-if="$store.state.battle">
+
+      <div class="ta-c  mb-3">
+        <button 
+          class="btn  btn--p"
+          @click="battle()" 
+          :disabled="opponentOne.hp < 20 || opponentTwo.hp < 20"
+        >
+          Commence battle
+        </button>
+      </div>
+
+      <!--
+      <transition name="fade">
+        <div class="ta-c  mb-3" v-show="opponentOne.hp <= 0 || opponentTwo.hp <= 0">
+          <button @click="reset()">
+            Reset
           </button>
         </div>
+      </transition>
+      -->
 
-        <!--
-        <transition name="fade">
-          <div class="ta-c  mb-3" v-show="opponentOne.hp <= 0 || opponentTwo.hp <= 0">
-            <button @click="reset()">
-              Reset
-            </button>
-          </div>
-        </transition>
-        -->
+      <p class="good  mb-0">{{opponentOne.name}}</p> 
+      <p class="mb-0">Attack: {{opponentOne.attack}}</p>
+      <p class="mb-0">HP: {{ $store.state.hp }}</p>
+      <p class="mb-0">Alignment: {{opponentOne.alignment}}</p>
+      <p>Melee Weapon: {{opponentOne.weapon}}</p>
 
-        <p class="good  mb-0">{{opponentOne.name}}</p> 
-        <p class="mb-0">Attack: {{opponentOne.attack}}</p>
-        <p class="mb-0">HP: {{ $store.state.hp }}</p>
-        <p class="mb-0">Alignment: {{opponentOne.alignment}}</p>
-        <p>Melee Weapon: {{opponentOne.weapon}}</p>
+      <p class="evil  mb-0">{{opponentTwo.name}}</p> 
+      <p class="mb-0">Attack: {{opponentTwo.attack}}</p>
+      <p class="mb-0">HP: {{opponentTwo.hp}}</p>
+      <p class="mb-0">Alignment: {{opponentTwo.alignment}}</p>
+      <p class="mb-0">Melee Weapon: {{opponentTwo.weapon}}</p>
 
-        <p class="evil  mb-0">{{opponentTwo.name}}</p> 
-        <p class="mb-0">Attack: {{opponentTwo.attack}}</p>
-        <p class="mb-0">HP: {{opponentTwo.hp}}</p>
-        <p class="mb-0">Alignment: {{opponentTwo.alignment}}</p>
-        <p class="mb-0">Melee Weapon: {{opponentTwo.weapon}}</p>
+      <div class="tt-u  mb-3">
+        <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">{{ opponentTwo.name }} died</h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">{{ opponentOne.name }} died</h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp <= 0">Everyone died</h3>
+      </div>
 
-        <div class="tt-u  mb-3">
-          <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">{{ opponentTwo.name }} died</h3>
-          <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">{{ opponentOne.name }} died</h3>
-          <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp <= 0">Everyone died</h3>
-        </div>
+      <div v-for="attack in attacks">
+        <p>{{ attack.message }}</p>
+      </div>
 
-        <div v-for="attack in attacks">
-          <p>{{ attack.message }}</p>
-        </div>
+      <!--<pre>{{$data}}</pre>-->
 
-        <!--<pre>{{$data}}</pre>-->
+    </div>
+  </section>
 
-  </div>
 </template>
 
 

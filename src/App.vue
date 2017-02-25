@@ -1,14 +1,16 @@
 <template>
   <div id="app">
 
-    <navigation></navigation>
+    <navigation />
 
     <div class="layout">
-      <create></create>
-      <hello></hello>
-      <battle></battle>
+      <start />
+      <characterNew />
+      <characterRandom />
+      <storyOne />
+      <hello />
+      <battle />
 
-      
       <!--<testing></testing>-->
 
     </div>
@@ -19,59 +21,192 @@
 
 
 <script>
-import Navigation from './components/Navigation';
-import Create from './components/Create';
-import Hello from './components/Hello';
-import Battle from './components/Battle';
-import Testing from './components/Testing';
+  import Navigation from './components/Navigation';
+  import Start from './components/Start';
+  import CharacterNew from './components/CharacterNew';
+  import CharacterRandom from './components/CharacterRandom';
+  import StoryOne from './components/StoryOne';
+  import Hello from './components/Hello';
+  import Battle from './components/Battle';
+  import Testing from './components/Testing';
 
-export default {
-  name: 'app',
-  components: {
-    Navigation,
-    Create,
-    Hello,
-    Battle,
-    Testing,
-  },
-};
+  export default {
+    name: 'app',
+    components: {
+      Navigation,
+      Start,
+      CharacterNew,
+      CharacterRandom,
+      StoryOne,
+      Hello,
+      Battle,
+      Testing,
+    },
+    methods: {
+      toggle() {
+        this.toggleActive = !this.toggleActive;
+      },
+      randomName() {
+        const names = [
+          'Dusty',
+          'Tiberius Facebutt',
+          'Herbert Deathrump Flamebeard',
+          'Bloodnutt the Flatulant IV',
+          'Grumpf the Angry',
+          'Prince Ludwig the Indestructible',
+          'Weasley Wigglebottom',
+          'Theodore Thornheart',
+        ];
+        const index = Math.floor(Math.random() * names.length);
+        this.name = names[index];
+      },
+      randomNameFirst() {
+        const namesFirst = [
+          'Dusty',
+          'Tiberius',
+          'Herbert',
+          'Grumpf',
+          'Prince',
+          'Weasley',
+          'Winston',
+        ];
+        const index = Math.floor(Math.random() * namesFirst.length);
+        this.nameFirst = namesFirst[index];
+      },
+      randomNameMiddle() {
+        const namesMiddle = [
+          'the Flatulant',
+          'Ludwig',
+          'Deathrump',
+        ];
+        const index = Math.floor(Math.random() * namesMiddle.length);
+        this.nameMiddle = namesMiddle[index];
+      },
+      randomNameLast() {
+        const namesLast = [
+          'Deathrump',
+          'Wellington',
+          'IV',
+          'Thornheart',
+          'Flamebeard',
+          'Facebutt',
+          'the Angry',
+        ];
+        const index = Math.floor(Math.random() * namesLast.length);
+        this.nameLast = namesLast[index];
+      },
+      randomAlignment() {
+        const alignments = [
+          'good',
+          'evil',
+          'really evil',
+          'psychopathic',
+        ];
+        const index = Math.floor(Math.random() * alignments.length);
+        this.alignment = alignments[index];
+      },
+      randomAge() {
+        const index = Math.floor(Math.random() * 1000);
+        this.age = index;
+      },
+      randomGender() {
+        const genders = [
+          'male',
+          'female',
+          'transsexual',
+          'bigender',
+          'genderqueer',
+          'androgyne',
+          'drag king',
+          'drag queen',
+        ];
+        const index = Math.floor(Math.random() * genders.length);
+        this.gender = genders[index];
+      },
+      randomRace() {
+        const races = [
+          'hobbit',
+          'ork',
+          'pixie',
+          'owlbear',
+          'satyr',
+          'reptillian',
+          'goblin',
+          'monopod',
+          'giant',
+          'hobbit',
+          'kerbal',
+          'undead',
+        ];
+        const index = Math.floor(Math.random() * races.length);
+        this.race = races[index];
+      },
+      randomOccupation() {
+        const occupations = [
+          'knight',
+          'wizard',
+          'sorcerer',
+          'peasent',
+        ];
+        const index = Math.floor(Math.random() * occupations.length);
+        this.occupation = occupations[index];
+      },
+      randomLocation() {
+        const locations = [
+          'King\'s landing',
+          'Brobdingnag',
+          'Another Dimension',
+          'Hell',
+        ];
+        const index = Math.floor(Math.random() * locations.length);
+        this.location = locations[index];
+      },
+    },
+  };
 </script>
 
 
 
 <style>
 
+  /* Settings */
   :root {
-    --blue-light: #89d3fd;
-    --blue-dark: #067df7;
-    --green: #5ce6cd;
-    --grey-light: #ccc;
-    --grey-dark: #999;
-    --pink: #ff0080;
+    --global-font-size: 14px;
+    --global-line-height: 2;
+
+    --spacing:         1em;
+    --spacing-medium:  calc(var(--spacing) * 2);
+    --spacing-large:   calc(var(--spacing) * 3);
+
+    --blue-light:   #89d3fd;
+    --blue-dark:    #067df7;
+    --green:        #5ce6cd;
+    --grey-light:   #ccc;
+    --grey-dark:    #999;
+    --pink:         #ff0080;
     --purple-light: #7775A7;
-    --purple-dark: #bd10e0;
-    --red: #ff0080;
-    --yellow: #ffbd2e;
+    --purple-dark:  #bd10e0;
+    --red:          #ff0080;
+    --yellow:       #ffbd2e;
   }
 
+
+
+  /* Generic */
   body {
     background-color: #000;
     color: #ccc;
-    font: 14px Menlo, "DejaVu Sans Mono", "Lucida Console", monospace;
+    font-family: Menlo, "DejaVu Sans Mono", "Lucida Console", monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1;
+    font-size: var(--global-font-size);
+    line-height: var(--global-line-height);
   }
 
   .layout {
     margin: 0 auto;
-    padding-top: 12rem;
+    padding-top: 12em;
     width: 640px;
-  }
-
-  button {
-    cursor: pointer;
-    font: inherit;
   }
 
   a {
@@ -79,18 +214,12 @@ export default {
   }
 
   p {
-    line-height: 2rem;
-    margin: 0 0 2rem;
+    margin: 0 0 1em;
   }
 
-  .db {
-    display: block;
-  }
 
-  .dib {
-    display: inline-block;
-  }
 
+  /* Colours */
   .white {
     color: #fff !important;
   }
@@ -139,34 +268,44 @@ export default {
     color: var(--red) !important;
   }
 
-  .mb-0 {
-    margin-bottom: 0 !important;
-  }
 
-  .mb-\.5 {
-    margin-bottom: .5rem !important;
+
+  /* Spacing */
+  .mb-0 {
+    margin-bottom: 0;
   }
 
   .mb-1 {
-    margin-bottom: 1rem !important;
+    margin-bottom: var(--spacing);
   }
 
   .mb-2 {
-    margin-bottom: 2rem !important;
+    margin-bottom: var(--spacing-medium);
   }
 
   .mb-3 {
-    margin-bottom: 3rem !important;
+    margin-bottom: var(--spacing-large);
   }
 
   .ml-1 {
-    margin-left: 1rem !important;
+    margin-left: var(--spacing);
   }
 
   .mr-1 {
-    margin-right: 1rem !important;
+    margin-right: var(--spacing);
   }
 
+
+
+  /* Utilities */
+  .d-b {
+    display: block;
+  }
+
+  .d-ib {
+    display: inline-block;
+  }
+   
   .f-l {
     float: left;
   }
@@ -187,12 +326,17 @@ export default {
     text-align: right;
   }
 
+
+
+  /* Buttons */
   .btn {
     background-color: transparent;
     border: none;
     color: inherit;
+    cursor: pointer;
+    font: inherit;
     font-weight: bold;
-    padding: .2rem;
+    padding: 0 .5em;
   }
 
     .btn:hover {
@@ -220,11 +364,39 @@ export default {
       color: #000;
     }
 
+
+
+  /* Transition */
   .fade-enter-active {
     transition: opacity .5s
   }
   .fade-enter, .fade-leave-active {
     opacity: 0
+  }
+
+
+
+  /* Input */
+  label {
+    font-size: 1em;
+    margin-bottom: .5em;
+  }
+
+  input {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    margin-bottom: 1em;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .form__item {
+    margin-bottom: 1.5em;
   }
 
 </style>
