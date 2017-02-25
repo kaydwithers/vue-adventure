@@ -1,3 +1,4 @@
+
 <template>
 
   <transition name="fade">
@@ -15,7 +16,7 @@
         It's your turn to cook tonight for your company of unsavoury adventurers known as <span class="pink">Barry's Angels.</span>
       </p>
 
-      <p class="mb-3">  
+      <p class="mb-3">
         You pick up and inspect a maggot infested piece of meat.
       </p>
 
@@ -49,5 +50,5 @@
 
 
 
-<style scoped>
+<style>
 </style>

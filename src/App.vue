@@ -8,7 +8,9 @@
       <characterNew />
       <characterRandom />
       <storyOne />
+      <storyTwo />
       <battle />
+      <death />
 
       <!--<testing />-->
     </div>
@@ -25,8 +27,10 @@
   import CharacterNew from './components/CharacterNew';
   import CharacterRandom from './components/CharacterRandom';
   import StoryOne from './components/StoryOne';
+  import StoryTwo from './components/StoryTwo';
   import Battle from './components/Battle';
   import Testing from './components/Testing';
+  import Death from './components/Death';
 
   export default {
     name: 'app',
@@ -36,8 +40,10 @@
       CharacterNew,
       CharacterRandom,
       StoryOne,
+      StoryTwo,
       Battle,
       Testing,
+      Death,
     },
   };
 

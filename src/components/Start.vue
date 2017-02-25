@@ -1,3 +1,4 @@
+
 <template>
 
   <transition name="fade">
@@ -22,7 +23,7 @@
           @click="
             $store.state.characterRandom = !$store.state.characterRandom, 
             $store.state.start = !$store.state.start,
-            randomName(), 
+            randomName, 
             randomAlignment(), 
             randomAge(), 
             randomGender(), 

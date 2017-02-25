@@ -1,8 +1,18 @@
+
 <template>
 
   <nav>
     <div class="f-l">
       <p>Chef Adventures</p>
+
+      <button class="btn" @click="toggle()">
+        {{ toggleActive ? 'Hide data' : 'Show data' }}
+      </button>
+
+      <div v-if="toggleActive">
+        <pre>{{$store.state}}</pre>
+      </div>
+
     </div>
 
     <div class="f-r  ta-r">
@@ -22,14 +32,22 @@
 
 
 <script>
+
   export default {
     name: 'navigation',
     data() {
       return {
         animal: 'frog',
+        toggleActive: false,
       };
     },
+    methods: {
+      toggle() {
+        this.toggleActive = !this.toggleActive;
+      },
+    },
   };
+
 </script>
 
 
