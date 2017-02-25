@@ -8,25 +8,23 @@
       <characterNew />
       <characterRandom />
       <storyOne />
-      <hello />
       <battle />
 
       <!--<testing />-->
-
     </div>
-    
+
   </div>
 </template>
 
 
 
 <script>
+
   import Navigation from './components/Navigation';
   import Start from './components/Start';
   import CharacterNew from './components/CharacterNew';
   import CharacterRandom from './components/CharacterRandom';
   import StoryOne from './components/StoryOne';
-  import Hello from './components/Hello';
   import Battle from './components/Battle';
   import Testing from './components/Testing';
 
@@ -38,11 +36,11 @@
       CharacterNew,
       CharacterRandom,
       StoryOne,
-      Hello,
       Battle,
       Testing,
     },
   };
+
 </script>
 
 
@@ -100,111 +98,39 @@
 
 
   /* Colours */
-  .white {
-    color: #fff !important;
-  }
-
-  .blue-light {
-    color: var(--blue-light) !important;
-  }
-
-  .blue-dark {
-    color: var(--blue-dark) !important;
-  }
-
-  .green {
-    color: var(--green) !important;
-  }
-
-  .grey-light {
-    color: var(--grey-light) !important;
-  }
-
-  .grey-dark {
-    color: var(--grey-dark) !important;
-  }
-
-  .papayawhip {
-    color: papayawhip !important;
-  }
-
-  .yellow {
-    color: var(--yellow) !important;
-  }
-
-  .pink {
-    color: var(--pink) !important;
-  }
-
-  .purple-light {
-    color: var(--purple-light) !important;
-  }
-
-  .purple-dark {
-    color: var(--purple-dark) !important;
-  }
-
-  .red {
-    color: var(--red) !important;
-  }
+  .white        { color: #fff; }
+  .blue-light   { color: var(--blue-light); }
+  .blue-dark    { color: var(--blue-dark); }
+  .green        { color: var(--green); }
+  .grey-light   { color: var(--grey-light); }
+  .grey-dark    { color: var(--grey-dark); }
+  .papayawhip   { color: papayawhip; }
+  .yellow       { color: var(--yellow); }
+  .pink         { color: var(--pink); }
+  .purple-light { color: var(--purple-light); }
+  .purple-dark  { color: var(--purple-dark); }
+  .red          { color: var(--red); }
 
 
 
   /* Spacing */
-  .mb-0 {
-    margin-bottom: 0;
-  }
-
-  .mb-1 {
-    margin-bottom: var(--spacing);
-  }
-
-  .mb-2 {
-    margin-bottom: var(--spacing-medium);
-  }
-
-  .mb-3 {
-    margin-bottom: var(--spacing-large);
-  }
-
-  .ml-1 {
-    margin-left: var(--spacing);
-  }
-
-  .mr-1 {
-    margin-right: var(--spacing);
-  }
+  .mb-0 { margin-bottom: 0; }
+  .mb-1 { margin-bottom: var(--spacing); }
+  .mb-2 { margin-bottom: var(--spacing-medium); }
+  .mb-3 { margin-bottom: var(--spacing-large); }
+  .ml-1 { margin-left: var(--spacing); }
+  .mr-1 { margin-right: var(--spacing); }
 
 
 
   /* Utilities */
-  .d-b {
-    display: block;
-  }
-
-  .d-ib {
-    display: inline-block;
-  }
-   
-  .f-l {
-    float: left;
-  }
-
-  .f-r {
-    float: right;
-  }
-
-  .tt-u {
-    text-transform: uppercase;
-  }
-
-  .ta-l {
-    text-align: left;
-  }
-
-  .ta-r {
-    text-align: right;
-  }
+  .d-b  { display: block; }
+  .d-ib { display: inline-block; }
+  .f-l  { float: left; }
+  .f-r  { float: right; }
+  .tt-u { text-transform: uppercase; }
+  .ta-l { text-align: left; }
+  .ta-r { text-align: right; }
 
 
 

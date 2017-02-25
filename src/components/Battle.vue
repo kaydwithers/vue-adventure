@@ -162,6 +162,5 @@
 
 
 
-<style scoped>
-
+<style>
 </style>

@@ -40,5 +40,5 @@
 
 
 
-<style scoped>
+<style>
 </style>

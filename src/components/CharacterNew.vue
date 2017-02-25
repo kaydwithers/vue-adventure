@@ -190,5 +190,5 @@
 
 
 
-<style scoped>
+<style>
 </style>
