@@ -11,7 +11,7 @@
       <hello />
       <battle />
 
-      <!--<testing></testing>-->
+      <!--<testing />-->
 
     </div>
     
@@ -41,126 +41,6 @@
       Hello,
       Battle,
       Testing,
-    },
-    methods: {
-      toggle() {
-        this.toggleActive = !this.toggleActive;
-      },
-      randomName() {
-        const names = [
-          'Dusty',
-          'Tiberius Facebutt',
-          'Herbert Deathrump Flamebeard',
-          'Bloodnutt the Flatulant IV',
-          'Grumpf the Angry',
-          'Prince Ludwig the Indestructible',
-          'Weasley Wigglebottom',
-          'Theodore Thornheart',
-        ];
-        const index = Math.floor(Math.random() * names.length);
-        this.name = names[index];
-      },
-      randomNameFirst() {
-        const namesFirst = [
-          'Dusty',
-          'Tiberius',
-          'Herbert',
-          'Grumpf',
-          'Prince',
-          'Weasley',
-          'Winston',
-        ];
-        const index = Math.floor(Math.random() * namesFirst.length);
-        this.nameFirst = namesFirst[index];
-      },
-      randomNameMiddle() {
-        const namesMiddle = [
-          'the Flatulant',
-          'Ludwig',
-          'Deathrump',
-        ];
-        const index = Math.floor(Math.random() * namesMiddle.length);
-        this.nameMiddle = namesMiddle[index];
-      },
-      randomNameLast() {
-        const namesLast = [
-          'Deathrump',
-          'Wellington',
-          'IV',
-          'Thornheart',
-          'Flamebeard',
-          'Facebutt',
-          'the Angry',
-        ];
-        const index = Math.floor(Math.random() * namesLast.length);
-        this.nameLast = namesLast[index];
-      },
-      randomAlignment() {
-        const alignments = [
-          'good',
-          'evil',
-          'really evil',
-          'psychopathic',
-        ];
-        const index = Math.floor(Math.random() * alignments.length);
-        this.alignment = alignments[index];
-      },
-      randomAge() {
-        const index = Math.floor(Math.random() * 1000);
-        this.age = index;
-      },
-      randomGender() {
-        const genders = [
-          'male',
-          'female',
-          'transsexual',
-          'bigender',
-          'genderqueer',
-          'androgyne',
-          'drag king',
-          'drag queen',
-        ];
-        const index = Math.floor(Math.random() * genders.length);
-        this.gender = genders[index];
-      },
-      randomRace() {
-        const races = [
-          'hobbit',
-          'ork',
-          'pixie',
-          'owlbear',
-          'satyr',
-          'reptillian',
-          'goblin',
-          'monopod',
-          'giant',
-          'hobbit',
-          'kerbal',
-          'undead',
-        ];
-        const index = Math.floor(Math.random() * races.length);
-        this.race = races[index];
-      },
-      randomOccupation() {
-        const occupations = [
-          'knight',
-          'wizard',
-          'sorcerer',
-          'peasent',
-        ];
-        const index = Math.floor(Math.random() * occupations.length);
-        this.occupation = occupations[index];
-      },
-      randomLocation() {
-        const locations = [
-          'King\'s landing',
-          'Brobdingnag',
-          'Another Dimension',
-          'Hell',
-        ];
-        const index = Math.floor(Math.random() * locations.length);
-        this.location = locations[index];
-      },
     },
   };
 </script>

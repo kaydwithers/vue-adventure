@@ -11,7 +11,7 @@ function randomName() {
     'Theodore Thornheart',
   ];
   const index = Math.floor(Math.random() * names.length);
-  this.name = names[index];
+  return names[index];
 }
 
 export default {
