@@ -6,6 +6,16 @@ import App from './App';
 import store from './store';
 import random from './random';
 
+/* eslint-disable no-undef */
+export default {
+  methods: {
+    randomAge() {
+      const index = Math.floor(Math.random() * 1000);
+      eventBus.$emit('randomAgeFn', $store.state.age = index);
+    },
+  },
+};
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

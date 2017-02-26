@@ -1,18 +1,13 @@
 
 <template>
+  <nav class="navigation">
 
-  <nav>
     <div class="f-l">
       <p>Chef Adventures</p>
 
-      <button class="btn" @click="toggle()">
-        {{ toggleActive ? 'Hide data' : 'Show data' }}
-      </button>
-
-      <div v-if="toggleActive">
+      <toggle>
         <pre>{{$store.state}}</pre>
-      </div>
-
+      </toggle>
     </div>
 
     <div class="f-r  ta-r">
@@ -25,26 +20,20 @@
       <p class="mb-0">Mood: {{ $store.state.mood }}</span></p>
       <p>Gold: {{ $store.state.gold }}</span></p>
     </div>
-  </nav>
 
+  </nav>
 </template>
 
 
 
 <script>
 
+  import Toggle from './Toggle';
+
   export default {
     name: 'navigation',
-    data() {
-      return {
-        animal: 'frog',
-        toggleActive: false,
-      };
-    },
-    methods: {
-      toggle() {
-        this.toggleActive = !this.toggleActive;
-      },
+    components: {
+      Toggle,
     },
   };
 

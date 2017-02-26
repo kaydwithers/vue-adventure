@@ -26,158 +26,162 @@
         Enter your details below. (input <b class="white">;</b> for random)
       </p>
 
-      <form class="mb-1" autocomplete="off">
+      <!-- First Name -->
+      <div class="">
+        <label class="white" for="nameFirst">
+          First Name:
+        </label>
 
-        <!-- First Name -->
-        <div class="">
-          <label class="white" for="nameFirst">
-            First Name:
+        <input 
+          class="" 
+          name="nameFirst" 
+          type="text" 
+          v-model="$store.state.nameFirst" 
+          @keyup.186="randomNameFirst()"
+          autofocus 
+        />
+      </div>
+
+      <!-- Middle Name -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.nameFirst">
+          <label class="white" for="nameMiddle">
+            Middle Name:
           </label>
 
           <input 
-            class="" 
-            name="nameFirst" 
+            name="nameMiddle" 
             type="text" 
-            v-model="$store.state.nameFirst" 
-            @keyup.186="randomNameFirst()"
-            autofocus 
-          />
+            v-model="$store.state.nameMiddle" 
+            @keyup.186="randomNameMiddle()"
+          >
         </div>
+      </transition>
 
-        <!-- Middle Name -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.nameFirst">
-            <label class="white" for="nameMiddle">
-              Middle Name:
-            </label>
-            <input 
-              name="nameMiddle" 
-              type="text" 
-              v-model="$store.state.nameMiddle" 
-              @keyup.186="randomNameMiddle()"
-            >
-          </div>
-        </transition>
+      <!-- Last Name -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.nameMiddle">
+          <label class="white" for="nameLast">
+            Last Name:
+          </label>
 
-        <!-- Last Name -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.nameMiddle">
-            <label class="white" for="nameLast">
-              Last Name:
-            </label>
-            <input 
-              name="nameLast" 
-              type="text" 
-              v-model="$store.state.nameLast" 
-              @keyup.186="randomNameLast()"
-            >
-          </div>
-        </transition>
+          <input 
+            name="nameLast" 
+            type="text" 
+            v-model="$store.state.nameLast" 
+            @keyup.186="randomNameLast()"
+          >
+        </div>
+      </transition>
 
-        <!-- Alignment -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.nameLast">
-            <label class="white" for="alignment">
-              Alignment:
-            </label>
-            <input 
-              name="alignment" 
-              type="text" 
-              v-model="$store.state.alignment"
-              @keyup.186="randomAlignment()"
-            >
-          </div>
-        </transition>
+      <!-- Alignment -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.nameLast">
+          <label class="white" for="alignment">
+            Alignment:
+          </label>
 
-        <!-- Age -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.alignment">
-            <label class="white" for="age">
-              Age:
-            </label>
-            <input 
-              name="age" 
-              type="number" 
-              v-model="$store.state.age" 
-              @keyup.186="randomAge()"
-            >
-          </div>
-        </transition>
+          <input 
+            name="alignment" 
+            type="text" 
+            v-model="$store.state.alignment"
+            @keyup.186="randomAlignment()"
+          >
+        </div>
+      </transition>
 
-        <!-- Gender -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.age">
-            <label class="white" for="gender">
-              Gender:
-            </label>
-            <input 
-              name="gender" 
-              type="text" 
-              v-model="$store.state.gender" 
-              @keyup.186="randomGender()"
-            >
-          </div>
-        </transition>
+      <!-- Age -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.alignment">
+          <label class="white" for="age">
+            Age:
+          </label>
 
-        <!-- Race -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.gender">
-            <label class="white" for="race">
-              Race:
-            </label>
-            <input 
-              name="race" 
-              type="text" 
-              v-model="$store.state.race" 
-              @keyup.186="randomRace()"
-            >
-          </div>
-        </transition>
+          <input 
+            name="age" 
+            type="number" 
+            v-model="$store.state.age" 
+            @keyup.186="randomAge()"
+          >
+        </div>
+      </transition>
 
-        <!-- Occupation -->
-        <transition name="fade">
-          <div class="" v-show="$store.state.race">
-            <label class="white" for="occupation">
-              Class:
-            </label>
-            <input 
-              name="occupation" 
-              type="text" 
-              v-model="$store.state.occupation"
-              @keyup.186="randomOccupation()"
-            >
-          </div>
-        </transition>
+      <!-- Gender -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.age">
+          <label class="white" for="gender">
+            Gender:
+          </label>
 
-        <!-- Location -->
-        <transition name="fade">
-          <div class="mb-3" v-show="$store.state.occupation">
-            <label class="white" for="location">
-              Where are you from?:
-            </label>
-            <input 
-              name="location" 
-              type="text" 
-              v-model="$store.state.location"
-              @keyup.186="randomLocation()"
-            >
-          </div>
-        </transition>
+          <input 
+            name="gender" 
+            type="text" 
+            v-model="$store.state.gender" 
+            @keyup.186="randomGender()"
+          >
+        </div>
+      </transition>
 
-        <!-- Button -->
-        <transition name="fade">
-          <button 
-            class="btn  btn--p" 
-            v-show="$store.state.location" 
-            @click="
-              $store.state.storyOne = !$store.state.storyOne, 
-              $store.state.characterNew = !$store.state.characterNew
-          ">
-            Begin adventure
-          </button>
-        </transition>
+      <!-- Race -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.gender">
+          <label class="white" for="race">
+            Race:
+          </label>
 
-      </form>
+          <input 
+            name="race" 
+            type="text" 
+            v-model="$store.state.race" 
+            @keyup.186="randomRace()"
+          >
+        </div>
+      </transition>
+
+      <!-- Occupation -->
+      <transition name="fade">
+        <div class="" v-show="$store.state.race">
+          <label class="white" for="occupation">
+            Class:
+          </label>
+
+          <input 
+            name="occupation" 
+            type="text" 
+            v-model="$store.state.occupation"
+            @keyup.186="randomOccupation()"
+          >
+        </div>
+      </transition>
+
+      <!-- Location -->
+      <transition name="fade">
+        <div class="mb-3" v-show="$store.state.occupation">
+          <label class="white" for="location">
+            Where are you from?:
+          </label>
+
+          <input 
+            name="location" 
+            type="text" 
+            v-model="$store.state.location"
+            @keyup.186="randomLocation()"
+          >
+        </div>
+      </transition>
+
+      <!-- Button -->
+      <transition name="fade">
+        <button 
+          class="btn  btn--p" 
+          v-show="$store.state.location" 
+          @click="
+            $store.state.storyOne = !$store.state.storyOne, 
+            $store.state.characterNew = !$store.state.characterNew
+        ">
+          Begin adventure
+        </button>
+      </transition>
 
     </section>
   </transition>

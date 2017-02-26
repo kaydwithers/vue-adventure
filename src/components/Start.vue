@@ -19,11 +19,12 @@
 
       <div class="mb-1">
         <button 
+          @randomAgeFn="$store.state.age = $event"
           class="btn" 
           @click="
             $store.state.characterRandom = !$store.state.characterRandom, 
             $store.state.start = !$store.state.start,
-            randomName, 
+            randomName(), 
             randomAlignment(), 
             randomAge(), 
             randomGender(), 
