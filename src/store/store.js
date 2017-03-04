@@ -52,8 +52,7 @@ export default new Vuex.Store({
 
   mutations: {
     age: (state) => {
-      const index = Math.floor(Math.random() * 1000);
-      state.age = index;
+      state.age = Math.floor(Math.random() * 1000);
     },
     increment: (state) => {
       state.counter += 1;
