@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+/* eslint-disable no-unused-vars, no-undef, arrow-body-style, no-param-reassign */
 export default new Vuex.Store({
   state: {
     start: true,
@@ -34,5 +35,25 @@ export default new Vuex.Store({
       'Wellington',
       'the Great',
     ],
+    counter: 0,
+  },
+  getters: {
+    randomAge: (state) => {
+      return state.age;
+    },
+    doubleCounter: (state) => {
+      return state.counter * 2;
+    },
+    stringCounter: (state) => {
+      return `${state.counter} Clicks`;
+    },
+  },
+  mutations: {
+    increment: (state) => {
+      state.counter += 1;
+    },
+    decrement: (state) => {
+      state.counter -= 1;
+    },
   },
 });

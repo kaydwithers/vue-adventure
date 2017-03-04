@@ -101,7 +101,7 @@
             name="age" 
             type="number" 
             v-model="$store.state.age" 
-            @keyup.186="randomAge()"
+            @keyup.186="age"
           >
         </div>
       </transition>

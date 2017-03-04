@@ -12,7 +12,7 @@
       <battle />
       <death />
 
-      <!--<testing />-->
+      <testing />
     </div>
 
   </div>

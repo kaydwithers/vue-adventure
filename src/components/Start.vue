@@ -19,13 +19,13 @@
 
       <div class="mb-1">
         <button 
-          @randomAgeFn="$store.state.age = $event"
           class="btn" 
           @click="
             $store.state.characterRandom = !$store.state.characterRandom, 
             $store.state.start = !$store.state.start,
             randomName(), 
             randomAlignment(), 
+            age, 
             randomAge(), 
             randomGender(), 
             randomRace(), 
@@ -34,9 +34,10 @@
         ">
           Random Character
         </button>
-      </div>
 
-      <!--{{$store.state}}-->
+        <button class="btn  btn--p" @click="age">You are {{ randomAge }} years old.</button>
+
+      </div>
 
     </section>
   </transition>
@@ -46,6 +47,15 @@
 
 
 <script>
+  import { mapGetters } from 'vuex';
+
+  export default {
+    computed: {
+      ...mapGetters([
+        'randomAge',
+      ]),
+    },
+  };
 </script>
 
 

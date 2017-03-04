@@ -1,52 +1,35 @@
 
 <template>
-  <div id="demo" v-if="$store.state.imActive">
-
-    <transition name="fade">
-      <p v-if="showMe">show</p>
-    </transition>
-
-    <button @click="showMe = !showMe">
-      show
-    </button>
-
-    <button @click="hideMe = !hideMe">
-      hide
-    </button>
-
-    <transition name="fade">
-      <p v-if="hideMe">hide</p>
-    </transition>
-
-    <pre>{{$data}}</pre>
-
+  <div>
+    <button class="btn  btn--p" @click="increment">Increment</button>
+    <button class="btn  btn--p" @click="decrement">Decrement</button>
+    <p>Counter is: {{ doubleCounter }}</p>
+    <p>Number of Clicks: {{ stringCounter }}</p>
   </div>
 </template>
 
 
 
-
 <script>
+  import { mapMutations, mapGetters } from 'vuex';
+
   export default {
-    name: 'create',
-    data() {
-      return {
-        showMe: false,
-        hideMe: true,
-      };
+    methods: {
+      ...mapMutations([
+        'increment',
+        'decrement',
+      ]),
     },
-    method: {
-      hidden() {
-        this.showMe = !this.hideMe;
-      },
+    computed: {
+      ...mapGetters([
+        'doubleCounter',
+        'stringCounter',
+      ]),
     },
   };
 </script>
 
 
 
-<style scoped>
-  #demo {
-    margin-top: 8rem;
-  }
+<style>
 </style>
