@@ -12,7 +12,7 @@
       <battle />
       <death />
 
-      <testing />
+      <!--<testing />-->
     </div>
 
   </div>
@@ -21,7 +21,6 @@
 
 
 <script>
-
   import Navigation from './components/Navigation';
   import Start from './components/Start';
   import CharacterNew from './components/CharacterNew';
@@ -46,7 +45,6 @@
       Death,
     },
   };
-
 </script>
 
 

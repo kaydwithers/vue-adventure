@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-/* eslint-disable no-unused-vars, no-undef, arrow-body-style, no-param-reassign */
+/* eslint-disable arrow-body-style, no-param-reassign */
 export default new Vuex.Store({
   state: {
     start: true,
