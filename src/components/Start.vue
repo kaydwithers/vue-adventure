@@ -35,8 +35,6 @@
           Random Character
         </button>
 
-        <button class="btn  btn--p" @click="age">You are {{ randomAge }} years old.</button>
-
       </div>
 
     </section>

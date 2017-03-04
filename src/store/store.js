@@ -37,6 +37,7 @@ export default new Vuex.Store({
     ],
     counter: 0,
   },
+
   getters: {
     randomAge: (state) => {
       return state.age;
@@ -48,7 +49,12 @@ export default new Vuex.Store({
       return `${state.counter} Clicks`;
     },
   },
+
   mutations: {
+    age: (state) => {
+      const index = Math.floor(Math.random() * 1000);
+      state.age = index;
+    },
     increment: (state) => {
       state.counter += 1;
     },
