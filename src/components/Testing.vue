@@ -2,13 +2,13 @@
 <template lang="pug">
 
   div.testing
-    button.btn.btn--test(@click="increment") Increment
-    button.btn.btn--test(@click="decrement") Decrement
+    p Greetings {{ randomNameFirst }} {{ randomNameLast }} the {{ randomAge }} year old {{ randomRace }}.
 
-    p Counter is: {{ doubleCounter }}
-    p Number of Clicks: {{ stringCounter }}
-
-    button.btn.btn--test(@click="age") You are {{ randomAge }} years old.
+    button.btn.btn--test.mb-1(@click="fnNameFirst") Random first name
+    button.btn.btn--test.mb-1(@click="fnNameLast") Random last name
+    button.btn.btn--test.mb-1(@click="fnAge") Random age
+    button.btn.btn--test.mb-1(@click="fnRace") Random race
+    button.btn.btn--test(@click="fnNameLast(), fnAge(), fnNameFirst()") Random all
 
 </template>
 
@@ -20,16 +20,19 @@
   export default {
     computed: {
       ...mapGetters([
-        'doubleCounter',
-        'stringCounter',
+        'randomNameFirst',
+        'randomNameLast',
         'randomAge',
+        'randomRace',
       ]),
     },
     methods: {
       ...mapMutations([
-        'increment',
-        'decrement',
-        'age',
+        'fnNameFirst',
+        'fnNameLast',
+        'fnAge',
+        'fnRace',
+        'fnRandomAll',
       ]),
     },
   };
@@ -42,6 +45,7 @@
   .btn--test {
     background-color: papayaWhip;
     color: #333;
+    display: block;
   }
 
 </style>

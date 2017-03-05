@@ -4,7 +4,7 @@
   <transition name="fade">
     <section v-if="$store.state.death">
 
-      <p>{{ $store.state.nameFirst }} DIED</p>
+      <p class="mb-3  tt-u">{{ $store.state.nameFirst }} {{ $store.state.nameLast }} the {{ $store.state.alignment }} {{ $store.state.age }} year old {{ $store.state.gender }} {{ $store.state.race }} {{ $store.state.occupation }} from {{ $store.state.location }} DIED</p>
 
       <button 
         class="btn  btn--p" 

@@ -4,19 +4,20 @@
   <transition name="fade">
     <section v-if="$store.state.characterRandom">
 
-      <p class="white">
+      <p class="white  mb-3">
         <b>
           Greetings
           <span class="grey-dark" v-if="$store.state.gender === 'male' && $store.state.occupation === 'knight'"> Sir</span> 
           <span class="grey-dark" v-if="$store.state.gender === 'female' && $store.state.occupation === 'knight'"> Dame</span> 
-          <span class="pink">{{ $store.state.name }}</span> 
-          <span class="purple-light" v-show="$store.state.alignment">the {{ $store.state.alignment }}</span> 
-          <span class="yellow" v-show="$store.state.age">{{ $store.state.age }} year old</span> 
+          <span class="pink">{{ $store.state.nameFirst }}</span> 
+          <span class="pink">{{ $store.state.nameLast }}</span> 
+          the <span class="purple-light">{{ $store.state.alignment }}</span> 
+          <span class="yellow">{{ $store.state.age }}</span> year old
           <span class="red">{{ $store.state.gender }}</span> 
           <span class="blue-dark">{{ $store.state.race }}</span> 
           <span class="purple-dark">{{ $store.state.occupation }}</span> 
-          <span class="grey-dark" v-show="$store.state.location">from {{ $store.state.location }},</span>
-          <span v-show="$store.state.location">you are very weak, very slow and butt ugly.</span>  
+          from <span class="grey-dark">{{ $store.state.location }},</span>
+          <span>you are very weak, very slow and butt ugly.</span>  
         </b>
       </p>
 

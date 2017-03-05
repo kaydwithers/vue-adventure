@@ -4,7 +4,7 @@
   <transition name="fade">
     <section v-if="$store.state.storyTwo">
 
-      <p>To be continued.</p>
+      <p class="mb-3">To be continued.</p>
 
       <button 
         class="btn  btn--p" 

@@ -23,14 +23,14 @@
           @click="
             $store.state.characterRandom = !$store.state.characterRandom, 
             $store.state.start = !$store.state.start,
-            randomName(), 
-            randomAlignment(), 
-            age, 
-            randomAge(), 
-            randomGender(), 
-            randomRace(), 
-            randomOccupation(), 
-            randomLocation()
+            fnNameFirst(),
+            fnNameLast(),
+            fnAlignment(),
+            fnAge(),
+            fnGender(),
+            fnRace(),
+            fnOccupation(),
+            fnLocation()
         ">
           Random Character
         </button>
@@ -45,12 +45,19 @@
 
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapMutations } from 'vuex';
 
   export default {
-    computed: {
-      ...mapGetters([
-        'randomAge',
+    methods: {
+      ...mapMutations([
+        'fnNameFirst',
+        'fnNameLast',
+        'fnAlignment',
+        'fnAge',
+        'fnGender',
+        'fnRace',
+        'fnOccupation',
+        'fnLocation',
       ]),
     },
   };

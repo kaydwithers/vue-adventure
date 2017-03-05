@@ -10,7 +10,6 @@
           <span class="grey-dark" v-if="$store.state.gender === 'male' && $store.state.occupation === 'knight'"> Sir</span> 
           <span class="grey-dark" v-if="$store.state.gender === 'female' && $store.state.occupation === 'knight'"> Dame</span> 
           <span class="pink">{{ $store.state.nameFirst }}</span> 
-          <span class="green">{{ $store.state.nameMiddle }}</span> 
           <span class="blue-light">{{ $store.state.nameLast }}</span> 
           <span class="purple-light" v-show="$store.state.alignment">the {{ $store.state.alignment }}</span> 
           <span class="yellow" v-show="$store.state.age">{{ $store.state.age }} year old</span> 
@@ -37,30 +36,14 @@
           name="nameFirst" 
           type="text" 
           v-model="$store.state.nameFirst" 
-          @keyup.186="randomNameFirst()"
+          @keyup.186="fnNameFirst()"
           autofocus 
         />
       </div>
 
-      <!-- Middle Name -->
-      <transition name="fade">
-        <div class="" v-show="$store.state.nameFirst">
-          <label class="white" for="nameMiddle">
-            Middle Name:
-          </label>
-
-          <input 
-            name="nameMiddle" 
-            type="text" 
-            v-model="$store.state.nameMiddle" 
-            @keyup.186="randomNameMiddle()"
-          >
-        </div>
-      </transition>
-
       <!-- Last Name -->
       <transition name="fade">
-        <div class="" v-show="$store.state.nameMiddle">
+        <div class="" v-show="$store.state.nameFirst">
           <label class="white" for="nameLast">
             Last Name:
           </label>
@@ -69,7 +52,7 @@
             name="nameLast" 
             type="text" 
             v-model="$store.state.nameLast" 
-            @keyup.186="randomNameLast()"
+            @keyup.186="fnNameLast()"
           >
         </div>
       </transition>
@@ -85,7 +68,7 @@
             name="alignment" 
             type="text" 
             v-model="$store.state.alignment"
-            @keyup.186="randomAlignment()"
+            @keyup.186="fnAlignment()"
           >
         </div>
       </transition>
@@ -101,7 +84,7 @@
             name="age" 
             type="number" 
             v-model="$store.state.age" 
-            @keyup.186="age"
+            @keyup.186="fnAge()"
           >
         </div>
       </transition>
@@ -117,7 +100,7 @@
             name="gender" 
             type="text" 
             v-model="$store.state.gender" 
-            @keyup.186="randomGender()"
+            @keyup.186="fnGender()"
           >
         </div>
       </transition>
@@ -133,7 +116,7 @@
             name="race" 
             type="text" 
             v-model="$store.state.race" 
-            @keyup.186="randomRace()"
+            @keyup.186="fnRace()"
           >
         </div>
       </transition>
@@ -149,7 +132,7 @@
             name="occupation" 
             type="text" 
             v-model="$store.state.occupation"
-            @keyup.186="randomOccupation()"
+            @keyup.186="fnOccupation()"
           >
         </div>
       </transition>
@@ -165,7 +148,7 @@
             name="location" 
             type="text" 
             v-model="$store.state.location"
-            @keyup.186="randomLocation()"
+            @keyup.186="fnLocation()"
           >
         </div>
       </transition>
@@ -191,6 +174,22 @@
 
 
 <script>
+  import { mapMutations } from 'vuex';
+
+  export default {
+    methods: {
+      ...mapMutations([
+        'fnNameFirst',
+        'fnNameLast',
+        'fnAlignment',
+        'fnAge',
+        'fnGender',
+        'fnRace',
+        'fnOccupation',
+        'fnLocation',
+      ]),
+    },
+  };
 </script>
 
 
