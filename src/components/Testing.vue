@@ -1,30 +1,23 @@
 
-<template>
-  <div>
-    <button class="btn  btn--p" @click="increment">Increment</button>
-    <button class="btn  btn--p" @click="decrement">Decrement</button>
+<template lang="pug">
 
-    <p>Counter is: {{ doubleCounter }}</p>
-    <p>Number of Clicks: {{ stringCounter }}</p>
+  div.testing
+    button.btn.btn--test(@click="increment") Increment
+    button.btn.btn--test(@click="decrement") Decrement
 
-    <button class="btn  btn--p" @click="age">You are {{ randomAge }} years old.</button>
-  </div>
+    p Counter is: {{ doubleCounter }}
+    p Number of Clicks: {{ stringCounter }}
+
+    button.btn.btn--test(@click="age") You are {{ randomAge }} years old.
+
 </template>
 
 
 
 <script>
-  import { mapMutations, mapGetters } from 'vuex';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
-    methods: {
-      ...mapMutations([
-        'increment',
-        'decrement',
-        'age',
-      ]),
-    },
-
     computed: {
       ...mapGetters([
         'doubleCounter',
@@ -32,10 +25,23 @@
         'randomAge',
       ]),
     },
+    methods: {
+      ...mapMutations([
+        'increment',
+        'decrement',
+        'age',
+      ]),
+    },
   };
 </script>
 
 
 
-<style>
+<style scoped>
+
+  .btn--test {
+    background-color: papayaWhip;
+    color: #333;
+  }
+
 </style>

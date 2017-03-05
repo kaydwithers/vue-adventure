@@ -51,6 +51,19 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    randomNameFirst: (state) => {
+      const namesFirst = [
+        'Dusty',
+        'Tiberius',
+        'Herbert',
+        'Grumpf',
+        'Prince',
+        'Weasley',
+        'Winston',
+      ];
+      const index = Math.floor(Math.random() * namesFirst.length);
+      state.nameFirst = namesFirst[index];
+    },
     age: (state) => {
       state.age = Math.floor(Math.random() * 1000);
     },
