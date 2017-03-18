@@ -7,8 +7,8 @@
       <div class="ta-c  mb-3">
         <button 
           class="btn  btn--p"
-          @click="battle(), name()" 
-          :disabled="$store.state.statistics.hp < 20 || $store.state.enemies.enemyHp < 20"
+          @click="battle()" 
+          :disabled="$store.state.enemies.enemyHp < 20 || $store.state.statistics.hp < 20"
         >
           Commence battle
         </button>
@@ -16,28 +16,34 @@
 
       <div class="mb-3">
         <p class="green  mb-0">{{$store.state.random.nameFirst}} {{$store.state.random.nameLast}}</p> 
-        <p class="mb-0">Attack: {{$store.state.statistics.attack}}</p>
-        <p class="mb-0">HP: {{$store.state.statistics.hp}}</p>
+        <p class="mb-0">Attack: {{opponentOne.attack}}</p>
+        <p class="mb-0">HP: {{opponentOne.hp}}</p>
         <p class="mb-0">Weapon: {{$store.state.statistics.weapon}}</p>
       </div>
 
       <div class="mb-3">
         <p class="red  mb-0">{{$store.state.enemies.enemyNameFirst}} {{$store.state.enemies.enemyNameLast}}</p> 
-        <p class="mb-0">Attack: {{$store.state.enemies.enemyAttack}}</p>
-        <p class="mb-0">HP: {{$store.state.enemies.enemyHp}}</p>
+        <p class="mb-0">Attack: {{opponentTwo.attack}}</p>
+        <p class="mb-0">HP: {{opponentTwo.hp}}</p>
         <p class="mb-0">Weapon: {{$store.state.enemies.enemyBasicWeaponQuality}} {{$store.state.enemies.enemyWeaponSize}} {{$store.state.enemies.enemyBasicWeaponMaterial}} {{$store.state.enemies.enemyBasicWeapon}}</p>
+      </div>
+
+      <div class="tt-u">
+        <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">
+          {{$store.state.enemies.enemyNameFirst}} died!
+        </h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">
+          {{$store.state.random.nameFirst}} died!
+        </h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp <= 0">
+          Everyone died!
+        </h3>
       </div>
 
       <div class="mb-3">
         <div v-for="attack in attacks">
           <p>{{attack.message}}</p>
         </div>
-      </div>
-
-      <div class="tt-u">
-        <h3 v-if="$store.state.enemies.enemyHp <= 0 && $store.state.statistics.hp > 0">{{$store.state.enemies.enemyNameFirst}} died</h3>
-        <h3 v-else-if="$store.state.statistics.hp <= 0 && $store.state.enemies.enemyHp > 0">{{$store.state.random.nameFirst}} died</h3>
-        <h3 v-else-if="$store.state.statistics.hp <= 0 && $store.state.enemies.enemyHp <= 0">Everyone died</h3>
       </div>
 
       <pre>{{$data}}</pre>
@@ -56,25 +62,27 @@
         attacks: [],
         opponentOne: {
           name: '',
-          hp: 20,
-          attack: 3,
+          hp: '',
+          attack: '',
         },
         opponentTwo: {
-          name: 'Greasus Goldtooth',
-          hp: 20,
-          attack: 3,
+          name: '',
+          hp: '',
+          attack: '',
         },
       };
     },
-    computed: {
-      name() {
-        this.opponentOne.name = this.$store.state.random.nameFirst;
-        this.opponentOne.hp = this.$store.state.statistics.hp;
-        this.opponentOne.attack = this.$store.state.statistics.attack;
-      },
-    },
     methods: {
       battle() {
+        /* eslint-disable max-len, prefer-template */
+        this.opponentOne.name = this.$store.state.random.nameFirst + ' ' + this.$store.state.random.nameLast;
+        this.opponentOne.hp = this.$store.state.statistics.hp;
+        this.opponentOne.attack = this.$store.state.statistics.attack;
+
+        this.opponentTwo.name = this.$store.state.enemies.enemyNameFirst + ' ' + this.$store.state.enemies.enemyNameLast;
+        this.opponentTwo.hp = this.$store.state.enemies.enemyHp;
+        this.opponentTwo.attack = this.$store.state.enemies.enemyAttack;
+
         const timer = setInterval(() => {
           this.randomMove(this.opponentOne, this.opponentTwo);
           this.randomMove(this.opponentTwo, this.opponentOne);
@@ -94,14 +102,15 @@
         const dice = moveType === 'spell' ? d100 : d20;
         this[moveType](dice, attacker, defender);
       },
+      /* eslint-disable no-param-reassign */
       attack(d20, attacker, defender) {
         if (d20 === 1) {
           this.attacks.push({ message: `${attacker.name} misses, is knocked off balance, falls backward and soils themself!` });
         } else if (d20 >= 2 && d20 <= 19) {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${attacker.name} strikes ${defender.name} with ${attacker.weapon} for ${attacker.attack} damage.` });
         } else {
-          this.opponentOne.hp -= this.opponentTwo.attack * 2;
+          defender.hp -= attacker.attack * 2;
           this.attacks.push({ message: `${defender.name} loses their right arm. An artery has been opened by the strike and a sensory nerve has been severed! ${attacker.name} equips the right arm flails it around wildly and attacks ${defender.name} for ${attacker.attack * 2} damage!` });
         }
       },
@@ -109,19 +118,19 @@
         if (d20 === 1) {
           this.attacks.push({ message: `${attacker.name} fails to block and takes ${attacker.attack} damage.` });
         } else if (d20 >= 2 && d20 <= 19) {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${defender.name} blocks ${attacker.name}'s attack.` });
         } else {
-          this.opponentOne.hp -= this.opponentTwo.attack * 2;
+          defender.hp -= attacker.attack * 2;
           this.attacks.push({ message: `${attacker.name}'s attack is deflected by ${defender.name}'s small ${defender.armour} breastplate!` });
         }
       },
       spell(d100, attacker, defender) {
         if (d100 === 1) {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${defender.name} casts polymorph on themself, turns into a sheep and bites ${attacker.name} for ${attacker.attack} damage!` });
         } else if (d100 >= 2 && d100 <= 5) {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${attacker.name} casts wild magic. A stray yak cow tumbles from the sky and lands on ${attacker.name} for ${attacker.attack} damage!` });
         } else if (d100 >= 6 && d100 <= 7) {
           this.attacks.push({ message: `${attacker.name} casts wild magic and turns a vibrant shade of blue!` });
@@ -144,10 +153,10 @@
         } else if (d100 >= 80 && d100 <= 89) {
           this.attacks.push({ message: `${attacker.name} casts friends on ${defender.name}. It is ineffective!` });
         } else if (d100 >= 90 && d100 <= 99) {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${attacker.name} casts magic missile. ${defender.name} takes ${attacker.attack} fire damage!` });
         } else {
-          this.opponentOne.hp -= this.opponentTwo.attack;
+          defender.hp -= attacker.attack;
           this.attacks.push({ message: `${attacker.name} casts polymorph. ${defender.name} turns into a sheep and bites ${attacker.name} for ${defender.attack} damage!` });
         }
       },
