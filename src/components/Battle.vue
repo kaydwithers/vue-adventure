@@ -7,7 +7,7 @@
       <div class="ta-c  mb-3">
         <button 
           class="btn  btn--p"
-          @click="battle()" 
+          @click="battle(), name()" 
           :disabled="$store.state.statistics.hp < 20 || $store.state.enemies.enemyHp < 20"
         >
           Commence battle
@@ -55,7 +55,7 @@
       return {
         attacks: [],
         opponentOne: {
-          name: '{{$store.state.random.nameFirst}}',
+          name: '',
           hp: 20,
           attack: 3,
         },
@@ -65,6 +65,13 @@
           attack: 3,
         },
       };
+    },
+    computed: {
+      name() {
+        this.opponentOne.name = this.$store.state.random.nameFirst;
+        this.opponentOne.hp = this.$store.state.statistics.hp;
+        this.opponentOne.attack = this.$store.state.statistics.attack;
+      },
     },
     methods: {
       battle() {
