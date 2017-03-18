@@ -2,15 +2,15 @@
 <template>
 
   <transition name="fade">
-    <section v-if="$store.state.death">
+    <section v-if="$store.state.toggle.death">
 
-      <p class="mb-3  tt-u">{{ $store.state.nameFirst }} {{ $store.state.nameLast }} the {{ $store.state.alignment }} {{ $store.state.age }} year old {{ $store.state.gender }} {{ $store.state.race }} {{ $store.state.occupation }} from {{ $store.state.location }} DIED</p>
+      <p class="mb-3  tt-u">{{ $store.state.random.nameFirst }} {{ $store.state.random.nameLast }} the {{ $store.state.random.alignment }} {{ $store.state.random.age }} year old {{ $store.state.random.gender }} {{ $store.state.random.race }} {{ $store.state.random.occupation }} from {{ $store.state.random.location }} DIED</p>
 
       <button 
         class="btn  btn--p" 
-        @click.prevent="
-          $store.state.death = !$store.state.death, 
-          $store.state.start = !$store.state.start
+        @click="
+          $store.state.toggle.death = !$store.state.toggle.death, 
+          $store.state.toggle.start = !$store.state.toggle.start
       ">
         Back to start
       </button>

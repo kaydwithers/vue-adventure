@@ -8,39 +8,35 @@
         <button 
           class="btn  btn--p"
           @click="battle()" 
-          :disabled="$store.state.statistics.hp < 20 || $store.state.enemies.enemyHp < 20"
+          :disabled="opponentOne.hp < 20 || opponentTwo.hp < 20"
         >
           Commence battle
         </button>
       </div>
 
-      <div class="mb-3">
-        <p class="green  mb-0">{{$store.state.random.nameFirst}} {{$store.state.random.nameLast}}</p> 
-        <p class="mb-0">Attack: {{$store.state.statistics.attack}}</p>
-        <p class="mb-0">HP: {{$store.state.statistics.hp}}</p>
-        <p class="mb-0">Weapon: {{$store.state.statistics.weapon}}</p>
+      <p class="good  mb-0">{{opponentOne.name}}</p> 
+      <p class="mb-0">Attack: {{opponentOne.attack}}</p>
+      <p class="mb-0">HP: {{ opponentOne.hp }}</p>
+      <p class="mb-0">Alignment: {{opponentOne.alignment}}</p>
+      <p>Melee Weapon: {{opponentOne.weapon}}</p>
+
+      <p class="evil  mb-0">{{opponentTwo.name}}</p> 
+      <p class="mb-0">Attack: {{opponentTwo.attack}}</p>
+      <p class="mb-0">HP: {{opponentTwo.hp}}</p>
+      <p class="mb-0">Alignment: {{opponentTwo.alignment}}</p>
+      <p class="mb-0">Melee Weapon: {{opponentTwo.weapon}}</p>
+
+      <div class="tt-u  mb-3">
+        <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">{{ opponentTwo.name }} died</h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">{{ opponentOne.name }} died</h3>
+        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp <= 0">Everyone died</h3>
       </div>
 
-      <div class="mb-3">
-        <p class="red  mb-0">{{$store.state.enemies.enemyNameFirst}} {{$store.state.enemies.enemyNameLast}}</p> 
-        <p class="mb-0">Attack: {{$store.state.enemies.enemyAttack}}</p>
-        <p class="mb-0">HP: {{$store.state.enemies.enemyHp}}</p>
-        <p class="mb-0">Weapon: {{$store.state.enemies.enemyBasicWeaponQuality}} {{$store.state.enemies.enemyWeaponSize}} {{$store.state.enemies.enemyBasicWeaponMaterial}} {{$store.state.enemies.enemyBasicWeapon}}</p>
+      <div v-for="attack in attacks">
+        <p>{{ attack.message }}</p>
       </div>
 
-      <div class="mb-3">
-        <div v-for="attack in attacks">
-          <p>{{attack.message}}</p>
-        </div>
-      </div>
-
-      <div class="tt-u">
-        <h3 v-if="$store.state.enemies.enemyHp <= 0 && $store.state.statistics.hp > 0">{{$store.state.enemies.enemyNameFirst}} died</h3>
-        <h3 v-else-if="$store.state.statistics.hp <= 0 && $store.state.enemies.enemyHp > 0">{{$store.state.random.nameFirst}} died</h3>
-        <h3 v-else-if="$store.state.statistics.hp <= 0 && $store.state.enemies.enemyHp <= 0">Everyone died</h3>
-      </div>
-
-      <pre>{{$data}}</pre>
+      <!--<pre>{{$data}}</pre>-->
 
     </div>
   </section>
@@ -51,18 +47,25 @@
 
 <script>
   export default {
+    name: 'create',
     data() {
       return {
         attacks: [],
         opponentOne: {
-          name: '{{$store.state.random.nameFirst}}',
+          name: 'Wilhelm Helldoom Bloodlord',
           hp: 20,
           attack: 3,
+          alignment: 'Good',
+          weapon: 'The Sword of Couronne',
+          armour: 'adamantine',
         },
         opponentTwo: {
           name: 'Greasus Goldtooth',
           hp: 20,
           attack: 3,
+          alignment: 'Chaotic evil',
+          weapon: 'The Sceptre of Titans',
+          armour: 'toad leather',
         },
       };
     },

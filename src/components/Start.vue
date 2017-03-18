@@ -2,7 +2,7 @@
 <template>
 
   <transition name="fade">
-    <section v-if="$store.state.start">
+    <section v-if="$store.state.toggle.start">
 
       <p class="mb-3">Select an option.</p>
 
@@ -10,8 +10,8 @@
         <button 
           class="btn" 
           @click="
-            $store.state.characterNew = !$store.state.characterNew, 
-            $store.state.start = !$store.state.start
+            $store.state.toggle.characterNew = !$store.state.toggle.characterNew, 
+            $store.state.toggle.start = !$store.state.toggle.start
         ">
           New Character
         </button>
@@ -21,16 +21,28 @@
         <button 
           class="btn" 
           @click="
-            $store.state.characterRandom = !$store.state.characterRandom, 
-            $store.state.start = !$store.state.start,
-            fnNameFirst(),
-            fnNameLast(),
-            fnAlignment(),
-            fnAge(),
-            fnGender(),
-            fnRace(),
-            fnOccupation(),
-            fnLocation()
+            $store.state.toggle.characterRandom = !$store.state.toggle.characterRandom, 
+            $store.state.toggle.start = !$store.state.toggle.start,
+            setAlignment(), 
+            setAge(), 
+            setAppearance(), 
+            setEnemyBasicWeapon(), 
+            setEnemyBasicWeaponMaterial(), 
+            setEnemyBasicWeaponQuality(), 
+            setEnemyNameFirst(), 
+            setEnemyNameLast(), 
+            setEnemyWeaponSize(), 
+            setGender(), 
+            setNameFirst(), 
+            setNameLast(), 
+            setOccupation(), 
+            setAnimalName(), 
+            setAnimalType(), 
+            setRace(), 
+            setSpeedType(), 
+            setStrengthType(),
+            setTitle(),  
+            setLocation()
         ">
           Random Character
         </button>
@@ -50,14 +62,26 @@
   export default {
     methods: {
       ...mapMutations([
-        'fnNameFirst',
-        'fnNameLast',
-        'fnAlignment',
-        'fnAge',
-        'fnGender',
-        'fnRace',
-        'fnOccupation',
-        'fnLocation',
+        'setAlignment',
+        'setAge',
+        'setAppearance',
+        'setAnimalName',
+        'setAnimalType',
+        'setEnemyBasicWeapon',
+        'setEnemyBasicWeaponMaterial',
+        'setEnemyBasicWeaponQuality',
+        'setEnemyNameFirst',
+        'setEnemyNameLast',
+        'setEnemyWeaponSize',
+        'setGender',
+        'setNameFirst',
+        'setNameLast',
+        'setOccupation',
+        'setRace',
+        'setSpeedType',
+        'setStrengthType',
+        'setTitle',
+        'setLocation',
       ]),
     },
   };

@@ -9,6 +9,8 @@
       <characterRandom />
       <storyOne />
       <storyTwo />
+      <storyThree />
+      <storFour />
       <battle />
       <death />
 
@@ -25,8 +27,10 @@
   import Start from './components/Start';
   import CharacterNew from './components/CharacterNew';
   import CharacterRandom from './components/CharacterRandom';
-  import StoryOne from './components/StoryOne';
-  import StoryTwo from './components/StoryTwo';
+  import StoryOne from './components/Story01';
+  import StoryTwo from './components/Story02';
+  import StoryThree from './components/Story03';
+  import StoryFour from './components/Story04';
   import Battle from './components/Battle';
   import Testing from './components/Testing';
   import Death from './components/Death';
@@ -40,6 +44,8 @@
       CharacterRandom,
       StoryOne,
       StoryTwo,
+      StoryThree,
+      StoryFour,
       Battle,
       Testing,
       Death,
