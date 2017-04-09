@@ -15,38 +15,36 @@
       </div>
 
       <div class="mb-3">
-        <p class="green  mb-0">{{$store.state.random.nameFirst}} {{$store.state.random.nameLast}}</p> 
-        <p class="mb-0">Attack: {{opponentOne.attack}}</p>
-        <p class="mb-0">HP: {{opponentOne.hp}}</p>
-        <p class="mb-0">Weapon: {{$store.state.statistics.weapon}}</p>
-      </div>
-
-      <div class="mb-3">
-        <p class="red  mb-0">{{$store.state.enemies.enemyNameFirst}} {{$store.state.enemies.enemyNameLast}}</p> 
-        <p class="mb-0">Attack: {{opponentTwo.attack}}</p>
-        <p class="mb-0">HP: {{opponentTwo.hp}}</p>
-        <p class="mb-0">Weapon: {{$store.state.enemies.enemyBasicWeaponQuality}} {{$store.state.enemies.enemyWeaponSize}} {{$store.state.enemies.enemyBasicWeaponMaterial}} {{$store.state.enemies.enemyBasicWeapon}}</p>
-      </div>
-
-      <div class="tt-u">
-        <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">
-          {{$store.state.enemies.enemyNameFirst}} died!
-        </h3>
-        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">
-          {{$store.state.random.nameFirst}} died!
-        </h3>
-        <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp <= 0">
-          Everyone died!
-        </h3>
-      </div>
-
-      <div class="mb-3">
         <div v-for="attack in attacks">
           <p>{{attack.message}}</p>
         </div>
       </div>
 
-      <pre>{{$data}}</pre>
+      <transition name="fade">
+        <div class="tt-u  mb-3">
+          <h3 v-if="opponentTwo.hp <= 0 && opponentOne.hp > 0">
+            <span class="red">{{$store.state.enemies.enemyNameFirst}} {{$store.state.enemies.enemyNameLast}}</span> died from <span class="red">a heartattack!</span>
+          </h3>
+          <h3 v-else-if="opponentOne.hp <= 0 && opponentTwo.hp > 0">
+            {{$store.state.random.nameFirst}} {{$store.state.random.nameLast}} died!
+          </h3>
+          <h3 v-else-if="$store.state.statistics.hp <= 0 && $store.state.enemies.enemyHp <= 0">
+            Everyone died!
+          </h3>
+
+          <button 
+            v-show="$store.state.statistics.hp <= 0 || opponentTwo.hp <= 0" 
+            class="btn  btn--p  d-b  mb-1" 
+            @click.prevent="
+              $store.state.toggle.storyFour = !$store.state.toggle.storyFour, 
+              $store.state.toggle.battle = !$store.state.toggle.battle
+          ">
+            Next
+          </button>
+        </div>
+      </transition>
+
+      <!--<pre>{{$data}}</pre>-->
 
     </div>
   </section>

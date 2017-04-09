@@ -7,12 +7,12 @@
       <p class="mb-3">To be continued</p>
 
       <button 
-        class="btn  d-b  mb-1" 
-        @click.prevent="
+        class="btn  btn--p" 
+        @click="
           $store.state.toggle.storyFour = !$store.state.toggle.storyFour, 
-          $store.state.toggle.battle = !$store.state.toggle.battle
+          $store.state.toggle.start = !$store.state.toggle.start
       ">
-        Battle
+        Back to start
       </button>
 
     </section>

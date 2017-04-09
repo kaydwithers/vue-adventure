@@ -10,7 +10,7 @@
       <storyOne />
       <storyTwo />
       <storyThree />
-      <storFour />
+      <storyFour />
       <battle />
       <death />
 

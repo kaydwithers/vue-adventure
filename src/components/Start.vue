@@ -11,7 +11,10 @@
           class="btn" 
           @click="
             $store.state.toggle.characterNew = !$store.state.toggle.characterNew, 
-            $store.state.toggle.start = !$store.state.toggle.start
+            $store.state.toggle.start = !$store.state.toggle.start,
+            setAppearance(), 
+            setSpeedType(), 
+            setStrengthType()
         ">
           New Character
         </button>

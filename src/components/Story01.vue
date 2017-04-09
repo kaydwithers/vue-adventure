@@ -43,7 +43,11 @@
 
 
     <section v-if="storyOneDeath">
-      <p class="mb-3">You and {{ companyName }} died from haemolytic uremic syndrome (explosive diarrhoea)!</p>
+      <p class="mb-3">
+        <span class="grey-dark">{{ $store.state.random.title }}</span> 
+        <span class="pink">{{ $store.state.random.nameFirst }}</span> 
+        <span class="pink">{{ $store.state.random.nameLast }}</span> 
+        and <span class="pink">Barry's Angels</span> died from haemolytic uremic syndrome (explosive diarrhoea)!</p>
 
       <button 
         class="btn  btn--p" 

@@ -16,7 +16,7 @@
         <span class="blue-dark">{{ $store.state.random.race }}</span> 
         <span class="purple-dark">{{ $store.state.random.occupation }}</span> 
         <span class="grey-dark" v-show="$store.state.random.location">from {{ $store.state.random.location }}.</span>
-        <span v-show="$store.state.random.location">you are {{ $store.state.random.strengthType }}, {{ $store.state.random.speedType }} and {{ $store.state.random.appearance }}.</span>
+        <span v-show="$store.state.random.location"> You are <span class="red">{{ $store.state.random.strengthType }},</span> <span class="red">{{ $store.state.random.speedType }}</span> and <span class="red">{{ $store.state.random.appearance }}.</span>
       </p>
 
       <p class="grey  mb-3">

@@ -33,7 +33,7 @@ const state = {
     'Butcher\'s knife',
     'Knife',
     'Dagger',
-    'Bare fists',
+    'Bare fist',
     'Spoon',
     'Stick',
   ],
@@ -83,7 +83,6 @@ const state = {
     'Large',
     'Giant',
     'Gigantic',
-    'Great',
   ],
 };
 
